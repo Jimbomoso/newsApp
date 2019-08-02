@@ -18,7 +18,7 @@ router.get("/scrape", function(req, res) {
         let titlesArray = [];
 
         $("title").each(function(i, element) {
-            let result{};
+            const result{};
 
             result.title = $(this)
                 .children("a")

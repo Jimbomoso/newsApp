@@ -20,8 +20,14 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main'})
 
 app.set('view engine', 'handlebars');
 
-mongoose.connect('mongodb://localhost/newsApp');
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+// Connect to the Mongo DB
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+// mongoose.connect('mongodb://localhost/newsApp');
 const db = mongoose.connection;
+
+
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
